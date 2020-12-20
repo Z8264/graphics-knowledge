@@ -1,170 +1,54 @@
-# SVG 知识文档
-
-## SVG 属性
-
-### viewBox
-
-```
-viewBox="x, y, width, height"
-```
-### preserveAspectRatio
-
-```
-preserveAspectRatio = "alignment [meet | slice]"
-```
-
-| alignment | 可选值                 |
-| --------- | ---------------------- |
-| x         | `xMin`, `xMid`, `xMax` |
-| y         | `yMin`, `yMid`, `mMax` |
-
-| 说明符 | 描述                       |
-| ------ | -------------------------- |
-| meet   | 缩放适应（保持高比例）     |
-| slice  | 剪裁图片（保持高比例）     |
-| none   | 平铺（不保留图像宽高比例） |
 
 
-## 形状
+### 技术
 
-|元素|描述|属性|
-|--|--|--|
-|line|直线| x1, y1, x2, y2 |
-|rect|矩形| x, y, width, height, rx, ry|
-|circle|圆形|cx, cy, r|
-|ellipse|椭圆|cx, cy, rx, ry|
-|polyline|折线|points|
-|polygon|多边形|points|
+**SVG**
 
-## 路径
+    Scalable Vector Graphics, SVG, is a W3C XML dialect to mark up graphics. 
 
-|命令|名称|描述|
-|--|--|--|
-|M|moveto|移动|
-|L|lineto|绘制直线|
-|H|horizontal lineto|水平直线|
-|V|vertical lineto|垂直直线|
-|C|curveto|三次贝塞尔曲线|
-|S|smooth curveto|平滑三次方贝塞尔曲线|
-|Q|quadratic Bezier curve|二次方贝塞尔曲线|
-|T|smooth quadratic Bezier curveto|平滑二次方贝塞尔曲线|
-|A|elliptical Arc|椭圆弧线|
-|Z|closepath|闭合路径|
+可缩放矢量图形，SVG 使用 XML 格式定义图像。
 
-## 样式
+**Canvas**
 
-填充与边框
+    The canvas element is part of HTML5 and allows for dynamic, scriptable rendering of 2D and 3D shapes and bitmap images.
+    
+Canvas 是 HTML5 的一部分，可以使用脚本动态绘制2D图形、3D图形、位图。
 
-| 属性             | 可选值                  | 描述                   |
-| ----------------- | ----------------------- | ---------------------- |
-| stroke            | [color]                      | 线颜色                 |
-| stroke-width      | [number]                       | 线宽               |
-| stroke-opacity    | [0~1]                       | 线透明度               |
-| stroke-dasharray  | [number array]                       | 虚线          |
-|stroke-dashoffset|[number]|虚线开始的位置|
-| stroke-linecap    | `butt`, `round`, `square` | 线头尾形状             |
-| stroke-linejoin   | `miter`, `round`, `bevel` | 链接线形状             |
-| stroke-miterlimit |                         | 相交处显示宽度与线宽比 |
-| fill              | [color]                       | 填充颜色               |
-| fill-opacity      | [0~1]                       | 填充透明度             |
-| fill-rule         | `nonzero`, `evenodd`     | 填充规则               |
+**WebGL**
+
+    WebGL (Web Graphics Library) is a JavaScript API that draws interactive 2D and 3D graphics.
+
+WebGL (Web图形库) 是一个用于绘制交互式2D/3D图形的 JavaScript API。
 
 
-## 文字
 
-元素 text & tspan
+### 应用场景
 
-```
-<text x="" y="">
-    TEXT <tspan> text </tspan>
-</text>
-```
+* 界面设计【图标】【动画】【交互设计】
+* 数据可视化 【图表】【流程图】【思维导图】【原型图】【UML】【网络拓扑图】【组织结构图】
+* 产品【游戏】【地图】
+* 人工智能 【图像识别】（例如王者荣耀直播，可以筛选主播正在使用的英雄，主要方式是识别使用的技能）
 
-坐标
+### 核心框架
 
-|属性|描述|
-|--|--|
-|x|横坐标|
-|y|纵坐标|
+SVG
+* [D3](https://d3js.org/) - Data-Driven Documents
+* [SVG.js](https://svgjs.com/docs/3.1/) - The lightweight library for manipulating and animating SVG
+* [Fontawesome](http://www.fontawesome.com/) - The iconic SVG, font, and CSS toolkit
 
-样式
-
-|属性|可选值|描述|
-|--|--|--|
-|font-family||字体|
-|font-size||字号|
-|font-weight|`bold`, `normal`|粗细|
-|font-style|`italic`,`normal`|样式|
-|text-decoration|`none`, `underline`, `overline`, `line-through`|装饰|
-|word-spacing||单词间距|
-|letter-spacing||字母间距|
-
-对齐方式
-
-|属性|可选值|描述|
-|--|--|--|
-|text-anchor|`start`, `middle`, `end`|文本对齐方式|
-
-文本长度
-
-|属性|可选值|描述|
-|--|--|--|
-|textLength|[number]|文本长度|
-|lengthAdjust|`spacing`, `spacingAndGlyphs`|字符间距模式|
-
-纵向文本
-
-|属性|可选值|描述|
-|--|--|--|
-|writing-mode|`tb`|top to bottom|
-|glphy-orientation-vertical|[number]|默认值为90，即纵向排列的字符旋转90度|
-
-文本路径 textPath
-
-```
-<defs>
-    <path id="path" d="..."/>
-</defs>
-
-<text>
-    <textPath xlink:href="#path">
-        ...
-    </textPath>
-</text>
-```
-
-## 文档结构
-
-|元素|描述|
-|--|--|
-|g|用来组合对象的容器，添加到 g 元素的属性会被其所有的子元素继承。|
-|use|在 SVG 文档内取得目标节点，并复制它们。|
-|defs|定义需要重复使用的图形元素，在 defs 元素中定义的图形元素不会直接呈现。|
-|symbol|用来定义一个图形模板对象，它可以用一个 use 元素实例化。|
-|image|图像信息|
+Canvas & WebGL
+* [Chart.js](http://chartjs.cn/) - Simple HTML5 Charts using the <canvas> tag
+* [Echart](https://echarts.apache.org/zh/index.html) - A powerful, interactive charting and data visualization library for browser
+* [Pixi.js](https://www.pixijs.com/) - The HTML5 Creation Engine: Create beautiful digital content with the fastest, most flexible 2D WebGL renderer.
+* [Three.js](https://threejs.org/) - JavaScript 3D library.
+* [Cocos2d-html5](https://www.cocos.com/) - Cocos2d for Web Browsers. Built using JavaScript.
 
 
-## 接口方法
+### 基础
 
-### SVGLocatable （svg / g)
+理论基础：
 
-|方法/属性|描述|
-|--|--|
-|getBBox()|元素的位置和边界，{x,y,width,height}|
-|getCTM()|返回SVBMatrix，当前元素到最近坐标系统的变换|
-|getScreenCTM()|返回SVBMatrix，当前元素到屏幕坐标系统的变换|
-|getTransformToElement(SVGElement)|返回SVBMatrix，当前元素到指定元素坐标系统的变换|
-
-### SVGPathElement (path)
-
-|方法/属性|描述|
-|--|--|
-|getTotalLength()|计算路径长度|
-|getPointAtLength(distance)|返回距离起点 distance 单位的点 {x,y}|
-
-### SVGAnimatedPoints (polygon / polyline)
-
-|方法/属性|描述|
-|--|--|
-|points|返回一个SVGPointList，点列表|
-
+* 计算机原理（渲染原理，GPU，屏刷新率等）
+* 数学 （三角函数，矩阵，贝塞尔曲线等）
+* 物理 （重力，弹力，摩擦力等）
+* 数据结构与算法
