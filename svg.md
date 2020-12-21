@@ -94,7 +94,7 @@ preserveAspectRatio = "alignment [meet | slice]"
 | font-family     |                                                 | 字体     |
 | font-size       |                                                 | 字号     |
 | font-weight     | `bold`, `normal`                                | 粗细     |
-| font-style      | `italic`,`normal`                               | 样式     |
+| font-style      | `italic`, `normal`                              | 样式     |
 | text-decoration | `none`, `underline`, `overline`, `line-through` | 装饰     |
 | word-spacing    |                                                 | 单词间距 |
 | letter-spacing  |                                                 | 字母间距 |
@@ -150,17 +150,17 @@ preserveAspectRatio = "alignment [meet | slice]"
 
 | 方法/属性                         | 描述                                            |
 | --------------------------------- | ----------------------------------------------- |
-| getBBox()                         | 元素的位置和边界，{x,y,width,height}            |
+| getBBox()                         | 元素的位置和边界，{x, y, width, height}         |
 | getCTM()                          | 返回SVBMatrix，当前元素到最近坐标系统的变换     |
 | getScreenCTM()                    | 返回SVBMatrix，当前元素到屏幕坐标系统的变换     |
 | getTransformToElement(SVGElement) | 返回SVBMatrix，当前元素到指定元素坐标系统的变换 |
 
 ### SVGPathElement (path)
 
-| 方法/属性                  | 描述                                 |
-| -------------------------- | ------------------------------------ |
-| getTotalLength()           | 计算路径长度                         |
-| getPointAtLength(distance) | 返回距离起点 distance 单位的点 {x,y} |
+| 方法/属性                  | 描述                                  |
+| -------------------------- | ------------------------------------- |
+| getTotalLength()           | 计算路径长度                          |
+| getPointAtLength(distance) | 返回距离起点 distance 单位的点 {x, y} |
 
 ### SVGAnimatedPoints (polygon / polyline)
 
